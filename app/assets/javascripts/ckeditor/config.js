@@ -39,6 +39,9 @@ if (typeof(CKEDITOR) !== 'undefined') {
     // Skin
     config.skin = 'minimalist,/assets/ckeditor/minimalist/';
 
+    // Plugins
+    config.extraPlugins = ',mentions';
+
     // Rails CSRF token
     config.filebrowserParams = function(){
       var csrf_token, csrf_param, meta,
