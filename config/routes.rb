@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'mentions/fetch'
+  end
+
   get 'errors/not_found'
   get 'errors/internal_server_error'
 
   get '/404' => 'errors#not_found'
   get '/500' => 'errors#internal_server_error'
+
+  get '/api/mentions' => 'mentions#fetch'
 
   resources :allies, :except => [:show, :new, :create, :edit, :update, :destroy] do
     collection do
