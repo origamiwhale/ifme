@@ -172,13 +172,9 @@ CKEDITOR_mentions.prototype.timeout_callback = function (args) {
   var startOffset  = parseInt(range.startOffset - str.length) || 0;
   var element      = range.startContainer.$;
 
-  var Drupal = {
-    settings: {
-      basePath: '/'
-    }
   }
 
-  $.get(Drupal.settings.basePath + 'ckeditor/mentions', {typed: str}, function(rsp) {
+  $.get('/api/mentions', {typed: str}, function(rsp) {
 
     var ckel = $('#' + element_id);
     var par = ckel.parent();
@@ -203,7 +199,7 @@ CKEDITOR_mentions.prototype.timeout_callback = function (args) {
 
       // Create link
       var link = document.createElement('a');
-      link.href = Drupal.settings.basePath + 'user/' + $(this).data('uid');
+      link.href = 'user/' + $(this).data('uid');
       link.textContent = '@' + $(this).data('realname');
 
       // Insert link after text node
